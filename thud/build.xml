@@ -1,15 +1,25 @@
-<project name="thud" default="package" basedir=".">
+<project name="ThudNG" default="package" basedir=".">
 
     <!-- Resource sets -->
     <path id="project.classpath">
         <pathelement location="lib/js.jar" />
         <pathelement location="${JRE_LIB}" />
     </path>
+	<property name="build.dir" location="bin"/>
+	<property name="dist.dir" location="dist"/>
+	
+	<target name="clean" description="Remove the build and distribution directories">
+		<!-- Delete the ${build.dir} and ${dist.dir} directory trees -->
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+	</target>
 
     <!-- Bootstrap custom Ant tasks. -->
     <!-- TODO: See if there's an existing Ant task for this. -->
     <target name="bootstrap">
-        <javac srcdir="lib" destdir="lib" target="1.5"
+    	<!-- create the build time stamp -->
+    	<tstamp/>
+        <javac srcdir="lib" destdir="lib" target="1.5" includeantruntime="no"
                classpath="lib/svnkit.jar" />
         <taskdef name="my.svn.info" classname="MySVNInfo"
                  classpath="lib:lib/svnkit.jar" />
@@ -17,8 +27,9 @@
 
     <!-- Project targets. -->
     <target name="compile" depends="bootstrap">
-        <mkdir dir="bin" />
-        <javac srcdir="src" destdir="bin" target="1.5" debug="on">
+        <mkdir dir="${build.dir}" />
+        <javac srcdir="src" destdir="${build.dir}" target="1.5" includeantruntime="no" 
+        	debug="on">
             <classpath refid="project.classpath" />
         </javac>
     </target>
@@ -29,13 +40,13 @@
 
         <copy file="CHANGES.RTF" todir="bin" />
 
-        <copy todir="bin/media">
+        <copy todir="${build.dir}/media">
             <fileset dir="media">
                 <include name="icon/icon.gif" />
             </fileset>
         </copy>
 
-        <copy todir="bin/scripts">
+        <copy todir="${build.dir}/scripts">
             <fileset dir="scripts">
                 <include name="**/*.js" />
                 <exclude name="test.js" />
@@ -43,28 +54,28 @@
         </copy>
     </target>
 
-    <target name="package-only" depends="package-common">
-        <jar destfile="Thud-only.jar" basedir="bin">
+    <target name="package-only" depends="package-common" description="Creates a code only ThudNG package">
+        <jar destfile="${dist.dir}/${ant.project.name}-only.jar" basedir="${build.dir}">
             <manifest>
                 <attribute name="Built-By" value="${user.name}" />
                 <attribute name="Main-Class" value="net.sourceforge.btthud.ui.Thud" />
                 <attribute name="Specification-Title" value="btthud" />
                 <attribute name="Specification-Version" value="${thud.version}" />
-                <attribute name="Specification-Vendor" value="The THUD Team" />
+                <attribute name="Specification-Vendor" value="The ${ant.project.name} Team" />
                 <attribute name="Implementation-Version" value="${svn.revision}" />
                 <attribute name="Class-Path" value="lib/js.jar" />
             </manifest>
         </jar>
     </target>
 
-    <target name="package-smoosh" depends="package-common">
-        <jar destfile="Thud.jar" basedir="bin">
+    <target name="package-smoosh" depends="package-common" description="Creates a ThudNG package with Javascript functions">
+        <jar destfile="${dist.dir}/${ant.project.name}.jar" basedir="${build.dir}">
             <manifest>
                 <attribute name="Built-By" value="${user.name}" />
                 <attribute name="Main-Class" value="net.sourceforge.btthud.ui.Thud" />
                 <attribute name="Specification-Title" value="btthud" />
                 <attribute name="Specification-Version" value="${thud.version}" />
-                <attribute name="Specification-Vendor" value="The THUD Team" />
+                <attribute name="Specification-Vendor" value="The ${ant.project.name} Team" />
                 <attribute name="Implementation-Version" value="${svn.revision}" />
             </manifest>
             <zipfileset src="lib/js.jar" />
@@ -76,7 +87,7 @@
     <target name="sign" depends="package">
         <input message="Enter key name (alias):" addproperty="sign.alias" defaultvalue="mykey" />
         <input message="Enter passphrase for keystore:" addproperty="sign.keystorepw" />
-        <signjar jar="Thud-only.jar" alias="${sign.alias}" storepass="${sign.keystorepw}" />
-        <signjar jar="Thud.jar" alias="${sign.alias}" storepass="${sign.keystorepw}" />
+        <signjar jar="${dist.dir}/${ant.project.name}-only.jar" alias="${sign.alias}" storepass="${sign.keystorepw}" />
+        <signjar jar="${dist.dir}/${ant.project.name}.jar" alias="${sign.alias}" storepass="${sign.keystorepw}" />
     </target>
 </project>

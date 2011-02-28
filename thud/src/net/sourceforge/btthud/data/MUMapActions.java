@@ -1,15 +1,21 @@
 package net.sourceforge.btthud.data;
 
-import java.util.Vector;
-import java.io.File;
-import java.net.URL;
-import sun.net.www.content.text.PlainTextInputStream;
-import java.io.*;
-import net.sourceforge.btthud.ui.map.MUMapComponent;
-import net.sourceforge.btthud.ui.Thud;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.util.Vector;
+
+import net.sourceforge.btthud.ui.Thud;
+import net.sourceforge.btthud.ui.map.MUMapComponent;
 
 public class MUMapActions {
 	protected Vector<MUMapAction>	myActionList;
@@ -36,9 +42,9 @@ public class MUMapActions {
 			
 			try
 			{
-				PlainTextInputStream	myStream;
+				InputStream	myStream;
 				
-				myStream = (PlainTextInputStream)urlToDefault.getContent ();
+				myStream = (InputStream)urlToDefault.getContent ();
 				
 				BufferedReader reader = new BufferedReader(new InputStreamReader(myStream));
 				BufferedWriter writer = new BufferedWriter (new OutputStreamWriter (new FileOutputStream (myThudConfig)));

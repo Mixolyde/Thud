@@ -7,12 +7,11 @@
 //
 package net.sourceforge.btthud.ui;
 
-import net.sourceforge.btthud.ui.status.MUStatusComponent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import net.sourceforge.btthud.data.MUPrefs;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import net.sourceforge.btthud.ui.status.MUStatusComponent;
 
 /**
  * Implements a status report window that displays heading, speed, heat, and

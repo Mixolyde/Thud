@@ -7,10 +7,6 @@
 //
 package net.sourceforge.btthud.data;
 
-import java.io.*;
-import java.awt.*;
-
-import java.util.*;
 
 public class MUConstants
 {

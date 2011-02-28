@@ -10,8 +10,11 @@ package net.sourceforge.btthud.util;
 
 // This class is for drawing the buttons with colored icons inside of them, indicating a currently selected color
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+
+import javax.swing.Icon;
 
 public class ColorWellIcon implements Icon {
 

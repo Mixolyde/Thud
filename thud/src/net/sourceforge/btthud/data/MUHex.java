@@ -8,7 +8,7 @@
 //
 package net.sourceforge.btthud.data;
 
-import java.awt.*;
+import java.awt.Color;
 import java.io.Serializable;
 
 public class MUHex implements Serializable

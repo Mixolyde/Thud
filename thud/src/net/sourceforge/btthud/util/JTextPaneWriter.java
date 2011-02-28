@@ -7,15 +7,15 @@
 //
 package net.sourceforge.btthud.util;
 
+import java.io.CharArrayWriter;
+import java.io.PrintWriter;
+
 import javax.swing.JTextPane;
-import javax.swing.text.StyledDocument;
-import javax.swing.text.StyleContext;
-import javax.swing.text.Style;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-
-import java.io.PrintWriter;
-import java.io.CharArrayWriter;
+import javax.swing.text.Style;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 
 /**
  * Implements a PrintWriter-style interface to a JTextPane.

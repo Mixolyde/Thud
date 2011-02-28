@@ -1,12 +1,13 @@
 package net.sourceforge.btthud.data;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Point2D;
 import java.util.StringTokenizer;
+
 import javax.swing.JOptionPane;
 
 import net.sourceforge.btthud.engine.commands.UserCommand;

@@ -7,29 +7,30 @@
 //
 package net.sourceforge.btthud.ui.status;
 
-import net.sourceforge.btthud.data.MUData;
-import net.sourceforge.btthud.data.MUPrefs;
+import java.awt.Color;
+import java.awt.Font;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 
-import net.sourceforge.btthud.data.MUConstants;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.text.DefaultStyledDocument.ElementSpec;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+
 import net.sourceforge.btthud.data.MUColors;
-import net.sourceforge.btthud.data.MUWeapon;
+import net.sourceforge.btthud.data.MUConstants;
+import net.sourceforge.btthud.data.MUData;
 import net.sourceforge.btthud.data.MUMyInfo;
+import net.sourceforge.btthud.data.MUPrefs;
+import net.sourceforge.btthud.data.MUUnitAmmo;
 import net.sourceforge.btthud.data.MUUnitInfo;
 import net.sourceforge.btthud.data.MUUnitWeapon;
-import net.sourceforge.btthud.data.MUUnitAmmo;
-
-import net.sourceforge.btthud.util.JTextPaneWriter;
+import net.sourceforge.btthud.data.MUWeapon;
 import net.sourceforge.btthud.util.BulkStyledDocument;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
-
-import java.util.*;
-import java.text.*;
+import net.sourceforge.btthud.util.JTextPaneWriter;
 
 /**
  * Implements a status report window that displays heading, speed, heat, and

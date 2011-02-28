@@ -8,11 +8,22 @@
 //
 package net.sourceforge.btthud.data;
 
-import java.io.*;
-import java.util.*;
-import java.util.regex.*;
-
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Stores all the information from contacts and tactical.
@@ -56,7 +67,8 @@ public class MUData implements Runnable {
     ArrayList<MUUnitInfo>		buildings = null;
     
     // LOS info is in a Hashtable since we don't iterate, we query it
-    public Hashtable			LOSinfo = new Hashtable();	  
+    public Hashtable<String, Boolean> 
+                                LOSinfo = new Hashtable<String, Boolean>();	  
     public int					lastLOSX = 0, lastLOSY = 0, lastLOSZ = 0;
 
     // Weather info
@@ -80,7 +92,7 @@ public class MUData implements Runnable {
 
         createHexCache();
         
-        LOSinfo = new Hashtable();
+        LOSinfo = new Hashtable<String, Boolean>();
         
         map = new MUHex[MAX_X][MAX_Y];		// individual hexes will be allocated if they are needed.. this is not very memory efficient still
 
@@ -123,11 +135,11 @@ public class MUData implements Runnable {
         try
         {
             // We need a ListIterator because it allows us to modify the list while we iterate
-            ListIterator		it = contacts.listIterator();
+            ListIterator<MUUnitInfo>		it = contacts.listIterator();
 
             while (it.hasNext())
             {
-                MUUnitInfo		unit = (MUUnitInfo) it.next();
+                MUUnitInfo unit =  it.next();
 
                 if (unit.isExpired())
                     it.remove();					// Remove this contact		
@@ -149,7 +161,7 @@ public class MUData implements Runnable {
       */
     protected int indexForId(String id)
     {
-        ListIterator		it = contacts.listIterator();
+        ListIterator<MUUnitInfo> it = contacts.listIterator();
         int					index;
         
         while (it.hasNext())
@@ -157,7 +169,7 @@ public class MUData implements Runnable {
             index = it.nextIndex();
 
             // See if the next unit's upper-case id matches the id sent in
-            if (((MUUnitInfo) it.next()).id.toUpperCase().equals(id.toUpperCase()))
+            if (it.next().id.toUpperCase().equals(id.toUpperCase()))
                 return index;            
         }
 
@@ -170,14 +182,14 @@ public class MUData implements Runnable {
      * @param	id		Map ID of unit to return
      */
     public MUUnitInfo getContact(String id) {
-    	return (MUUnitInfo) contacts.get(indexForId(id));    	
+    	return contacts.get(indexForId(id));    	
     }
     
     /**
       * Returns an Iterator for the contact list. Used for looping on contacts when drawing the map, for example
       * @param sorted True if we want a sorted list
       */
-    public Iterator getContactsIterator(boolean sorted)
+    public Iterator<MUUnitInfo> getContactsIterator(boolean sorted)
     {
         if (!sorted)
             return contacts.iterator();
@@ -307,7 +319,7 @@ public class MUData implements Runnable {
      */
     public void clearLOS()
     {
-    	LOSinfo = new Hashtable();
+    	LOSinfo = new Hashtable<String, Boolean>();
     }
     /**
       * Sets the map changed flag.
@@ -479,7 +491,7 @@ public class MUData implements Runnable {
      */
     public void validate () {
         // Clear terrain around landed dropships.
-        Iterator contacts = getContactsIterator(false);
+        Iterator<MUUnitInfo> contacts = getContactsIterator(false);
 
         while (contacts.hasNext()) {
             final MUUnitInfo unit = (MUUnitInfo)contacts.next();

@@ -7,16 +7,16 @@
 //
 package net.sourceforge.btthud.ui;
 
-import net.sourceforge.btthud.data.MUPrefs;
-
-import java.awt.Window;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Dimension;
+import java.awt.Window;
 
-import javax.swing.JFrame;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
+
+import net.sourceforge.btthud.data.MUPrefs;
 
 /**
  * Base class for child window proxies.

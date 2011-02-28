@@ -8,16 +8,13 @@
 //
 package net.sourceforge.btthud.ui;
 
-import net.sourceforge.btthud.ui.map.MUMapComponent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import net.sourceforge.btthud.data.MUPrefs;
-import net.sourceforge.btthud.engine.commands.UserCommand;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
+import net.sourceforge.btthud.ui.map.MUMapComponent;
 
 public class MUTacticalMap extends ChildWindow implements ActionListener, KeyListener {
 	private final MUMapComponent map;
@@ -71,66 +68,68 @@ public class MUTacticalMap extends ChildWindow implements ActionListener, KeyLis
     {
         map.mapActions.fireKeyEvent (map.myThud, map, ke);
         
-        if (false)
-        {
-    	char myKey = ke.getKeyChar ();
-    	
-    	System.out.println ("keyTyped: 001");
-    	
-    	int		modifiers = ke.getModifiersEx ();
-    	
-    	System.out.println ("KY:Checking Modifiers");
-    	if ((modifiers & KeyEvent.SHIFT_DOWN_MASK) == KeyEvent.SHIFT_DOWN_MASK)
-    		System.out.println ("KY:SHIFT IS DOWN");
-    	else
-    		System.out.println ("KY:SHIFT IS UP");
 
-    	if ((modifiers & KeyEvent.CTRL_DOWN_MASK) == KeyEvent.CTRL_DOWN_MASK)
-    		System.out.println ("KY:CTRL IS DOWN");
-    	else
-    		System.out.println ("KY:CTRL IS UP");
+        /* This commented out code was wrapped with if(false).
+         * It may become useful again in the future.
+         */
+//    	char myKey = ke.getKeyChar ();
+//    	
+//    	System.out.println ("keyTyped: 001");
+//    	
+//    	int		modifiers = ke.getModifiersEx ();
+//    	
+//    	System.out.println ("KY:Checking Modifiers");
+//    	if ((modifiers & KeyEvent.SHIFT_DOWN_MASK) == KeyEvent.SHIFT_DOWN_MASK)
+//    		System.out.println ("KY:SHIFT IS DOWN");
+//    	else
+//    		System.out.println ("KY:SHIFT IS UP");
+//
+//    	if ((modifiers & KeyEvent.CTRL_DOWN_MASK) == KeyEvent.CTRL_DOWN_MASK)
+//    		System.out.println ("KY:CTRL IS DOWN");
+//    	else
+//    		System.out.println ("KY:CTRL IS UP");
+//
+//    	if ((modifiers & KeyEvent.ALT_DOWN_MASK) == KeyEvent.ALT_DOWN_MASK)
+//    		System.out.println ("KY:ALT IS DOWN");
+//    	else
+//    		System.out.println ("KY:ALT IS UP");
+//    	
+//    	if (myKey == '0' ||
+//    		myKey == '1' ||
+//    		myKey == '2' ||
+//    		myKey == '3' ||
+//    		myKey == '4' ||
+//    		myKey == '5' ||
+//    		myKey == '6' ||
+//    		myKey == '7' ||
+//    		myKey == '8' ||
+//    		myKey == '9')
+//    	{
+//        	System.out.println ("keyTyped: 002 :" + myKey + ":");
+//        	
+//    		char [] myChars = new char [6];
+//    		
+//    		myChars [0] = 'f';
+//    		myChars [1] = 'i';
+//    		myChars [2] = 'r';
+//    		myChars [3] = 'e';
+//    		myChars [4] = ' ';
+//    		myChars [5] = myKey;
+//    		
+//    		String myCmd = new String (myChars);
+//    		
+//        	System.out.println ("keyTyped: 003 :" + myCmd + ":");
+//        	
+//			try {
+//				thud.getConn().sendCommand(new UserCommand (myCmd));
+//			} catch (Exception e1) {
+//				// TODO: Seems like it'd be more friendly to report
+//				// these errors in the main window, or in a modal
+//				// dialog.  Hiding things in the console is so like
+//				// 1990.
+//				System.err.println("Can't send: " + e1);
+//			}
+//    	}
 
-    	if ((modifiers & KeyEvent.ALT_DOWN_MASK) == KeyEvent.ALT_DOWN_MASK)
-    		System.out.println ("KY:ALT IS DOWN");
-    	else
-    		System.out.println ("KY:ALT IS UP");
-    	
-    	if (myKey == '0' ||
-    		myKey == '1' ||
-    		myKey == '2' ||
-    		myKey == '3' ||
-    		myKey == '4' ||
-    		myKey == '5' ||
-    		myKey == '6' ||
-    		myKey == '7' ||
-    		myKey == '8' ||
-    		myKey == '9')
-    	{
-        	System.out.println ("keyTyped: 002 :" + myKey + ":");
-        	
-    		char [] myChars = new char [6];
-    		
-    		myChars [0] = 'f';
-    		myChars [1] = 'i';
-    		myChars [2] = 'r';
-    		myChars [3] = 'e';
-    		myChars [4] = ' ';
-    		myChars [5] = myKey;
-    		
-    		String myCmd = new String (myChars);
-    		
-        	System.out.println ("keyTyped: 003 :" + myCmd + ":");
-        	
-			try {
-				thud.getConn().sendCommand(new UserCommand (myCmd));
-			} catch (Exception e1) {
-				// TODO: Seems like it'd be more friendly to report
-				// these errors in the main window, or in a modal
-				// dialog.  Hiding things in the console is so like
-				// 1990.
-				System.err.println("Can't send: " + e1);
-			}
-    	}
-        }
     }
 }

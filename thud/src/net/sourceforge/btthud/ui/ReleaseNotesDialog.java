@@ -8,10 +8,14 @@
 //
 package net.sourceforge.btthud.ui;
 
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.text.rtf.*;
-import java.awt.*;
+import java.awt.Dimension;
+
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.text.Document;
+import javax.swing.text.StyledDocument;
+import javax.swing.text.rtf.RTFEditorKit;
 
 public class ReleaseNotesDialog extends javax.swing.JDialog {
 

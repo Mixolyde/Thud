@@ -8,15 +8,17 @@
 //
 package net.sourceforge.btthud.engine;
 
-import net.sourceforge.btthud.engine.commands.HUDVersion;
-import net.sourceforge.btthud.engine.commands.HUDGeneralStatic;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import net.sourceforge.btthud.data.MUData;
+import net.sourceforge.btthud.data.MUPrefs;
 import net.sourceforge.btthud.engine.commands.HUDArmorOriginal;
+import net.sourceforge.btthud.engine.commands.HUDConditions;
+import net.sourceforge.btthud.engine.commands.HUDGeneralStatic;
+import net.sourceforge.btthud.engine.commands.HUDVersion;
 import net.sourceforge.btthud.engine.commands.HUDWeaponList;
 import net.sourceforge.btthud.engine.commands.HUDWeaponStatus;
-import net.sourceforge.btthud.engine.commands.HUDConditions;
-
-import net.sourceforge.btthud.data.*;
-import java.util.*;
 
 public class MUCommands
 {

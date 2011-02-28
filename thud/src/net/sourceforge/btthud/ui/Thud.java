@@ -7,33 +7,65 @@
 //
 package net.sourceforge.btthud.ui;
 
-import net.sourceforge.btthud.data.*;
-import net.sourceforge.btthud.engine.*;
-import net.sourceforge.btthud.util.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Event;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Set;
 
+import javax.swing.AbstractAction;
+import javax.swing.AbstractButton;
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
+import javax.swing.InputMap;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JColorChooser;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.KeyStroke;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.DefaultEditorKit;
+
+import net.sourceforge.btthud.data.MUData;
+import net.sourceforge.btthud.data.MUHost;
+import net.sourceforge.btthud.data.MUPrefs;
+import net.sourceforge.btthud.engine.MUCommands;
+import net.sourceforge.btthud.engine.MUConnection;
+import net.sourceforge.btthud.engine.MUParse;
 import net.sourceforge.btthud.engine.commands.HUDSession;
 import net.sourceforge.btthud.engine.commands.UserCommand;
-
-import net.sourceforge.btthud.script.ScriptRunner;
 import net.sourceforge.btthud.script.Interactor;
-
-import java.io.*;
-import java.net.URL;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-
-import javax.swing.event.DocumentListener;
-import javax.swing.event.DocumentEvent;
-
-import javax.swing.text.DefaultEditorKit;
-import javax.swing.text.Keymap;
-import javax.swing.plaf.basic.BasicTextUI.BasicHighlighter;
-
-import java.util.*;
-import java.lang.ref.WeakReference;
+import net.sourceforge.btthud.script.ScriptRunner;
+import net.sourceforge.btthud.util.BulkStyledDocument;
+import net.sourceforge.btthud.util.DataStore;
+import net.sourceforge.btthud.util.JTextPaneWriter;
+import net.sourceforge.btthud.util.PreferenceStore;
 
 public class Thud extends JFrame implements Runnable {
 	// TODO: Make the escape character configurable?

@@ -7,15 +7,12 @@
 //
 package net.sourceforge.btthud.script;
 
-import java.util.Map;
-import java.util.HashMap;
-
-import java.io.Reader;
 import java.io.BufferedReader;
-import java.io.IOException;
-
-import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Handles user interaction with the scripting engine.  This is probably a bit

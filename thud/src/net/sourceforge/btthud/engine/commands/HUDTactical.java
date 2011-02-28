@@ -70,10 +70,10 @@ public class HUDTactical extends HUDCommand {
 		this.height = height;
 		this.los = los;
 
-		if (los) {
-			commandString = "hudinfo t " + height + " 0 0 l";
+		if (this.los) {
+			commandString = "hudinfo t " + this.height + " 0 0 l";
 		} else {
-			commandString = "hudinfo t " + height;
+			commandString = "hudinfo t " + this.height;
 		}
 	}
 

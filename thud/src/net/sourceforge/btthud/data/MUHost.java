@@ -8,7 +8,6 @@
 //
 package net.sourceforge.btthud.data;
 
-import java.io.*;
 
 // XXX: If you make this mutable, implement Cloneable/clone() and update the
 // clone() in MUPrefs to do a deep copy of the host list.

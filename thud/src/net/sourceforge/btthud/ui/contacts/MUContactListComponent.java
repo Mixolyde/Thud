@@ -7,27 +7,23 @@
 //
 package net.sourceforge.btthud.ui.contacts;
 
-import net.sourceforge.btthud.data.MUData;
-import net.sourceforge.btthud.data.MUPrefs;
-
-import net.sourceforge.btthud.data.MUUnitInfo;
-
-import net.sourceforge.btthud.util.JTextPaneWriter;
-import net.sourceforge.btthud.util.BulkStyledDocument;
-
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.MutableAttributeSet;
-import javax.swing.text.StyleConstants;
 import javax.swing.text.DefaultStyledDocument.ElementSpec;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
-import java.util.Iterator;
-import java.util.ArrayList;
+import net.sourceforge.btthud.data.MUData;
+import net.sourceforge.btthud.data.MUPrefs;
+import net.sourceforge.btthud.data.MUUnitInfo;
+import net.sourceforge.btthud.util.BulkStyledDocument;
+import net.sourceforge.btthud.util.JTextPaneWriter;
 
 public class MUContactListComponent extends JScrollPane {
 	private MUPrefs prefs;
@@ -75,7 +71,7 @@ public class MUContactListComponent extends JScrollPane {
 		if (!data.hudRunning)
 			return;
 
-		final Iterator contacts = data.getContactsIterator(true); // Sorted list
+		final Iterator<MUUnitInfo> contacts = data.getContactsIterator(true); // Sorted list
 
 		elements.clear();
 

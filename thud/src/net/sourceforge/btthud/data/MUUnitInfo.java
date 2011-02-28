@@ -8,9 +8,11 @@
 //
 package net.sourceforge.btthud.data;
 
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.font.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.GeneralPath;
 
 /**
  * This class is for storing all the information about a single unit (typically a contact, enemy or friendly).
@@ -19,7 +21,7 @@ import java.awt.font.*;
  * @version 1.0, 11.20.01
  */
  
-public class MUUnitInfo extends Object implements Comparable {
+public class MUUnitInfo extends Object implements Comparable<MUUnitInfo> {
 
     public boolean		friend = false;
     public boolean		target = false;
@@ -375,21 +377,21 @@ public class MUUnitInfo extends Object implements Comparable {
       * Right now we sort based on range, for easy contact lists.
       * Destroyed units should come last.
       */
-    public int compareTo(Object o2)
+    public int compareTo(MUUnitInfo o2)
     {
         if (type.equals("i"))
             return 1;
         if (isDestroyed())
             return 1;
         
-        if (range < ((MUUnitInfo) o2).range)
+        if (range < (o2).range)
             return -1;
-        else if (range > ((MUUnitInfo) o2).range)
+        else if (range > (o2).range)
             return 1;
         else
         {
             // We don't want to return 0 unless they are exactly the same unit. Otherwise, it doesn't matter which is first
-            return id.compareTo(((MUUnitInfo) o2).id);
+            return id.compareTo(o2.id);
         }
     }
 

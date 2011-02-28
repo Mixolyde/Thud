@@ -7,15 +7,14 @@
 //
 package net.sourceforge.btthud.script;
 
-import java.util.List;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.Iterator;
+import java.util.List;
 
 import org.mozilla.javascript.Context;
-import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.Function;
-
-import java.io.Reader;
-import java.io.IOException;
+import org.mozilla.javascript.Scriptable;
 
 /**
  * Scripted event-handling thread.
@@ -152,7 +151,7 @@ public class ScriptRunner implements Runnable {
 		final Object result = ((Function)fObject).call(context, scope,
 		                                               scope, args);
 
-		System.out.println("Script: " + context.toString(result));
+		System.out.println("Script: " + Context.toString(result));
 	}
 
 	private void handleEvent (final ExecuteEvent evt) {
@@ -169,7 +168,7 @@ public class ScriptRunner implements Runnable {
 		// TODO: Make this togglable?
 		final Object result = context.evaluateString(sharedScope, input,
 		                                             name, 1, null);
-		System.out.println("Script: " + context.toString(result));
+		System.out.println("Script: " + Context.toString(result));
 	}
 
 	private void executeScript (final Reader input, final String name) {

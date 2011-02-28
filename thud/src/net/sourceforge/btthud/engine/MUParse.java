@@ -8,13 +8,20 @@
 //
 package net.sourceforge.btthud.engine;
 
-import net.sourceforge.btthud.data.*;
+import java.util.List;
+import java.util.StringTokenizer;
 
-import javax.swing.*;
-
-import java.util.*;
-
-import net.sourceforge.btthud.util.*;
+import net.sourceforge.btthud.data.MUBuildingInfo;
+import net.sourceforge.btthud.data.MUData;
+import net.sourceforge.btthud.data.MUMyInfo;
+import net.sourceforge.btthud.data.MUPrefs;
+import net.sourceforge.btthud.data.MUUnitAmmo;
+import net.sourceforge.btthud.data.MUUnitInfo;
+import net.sourceforge.btthud.data.MUUnitWeapon;
+import net.sourceforge.btthud.data.MUWeapon;
+import net.sourceforge.btthud.data.MUWeather;
+import net.sourceforge.btthud.util.BulkStyledDocument;
+import net.sourceforge.btthud.util.JTextPaneWriter;
 
 /* Note: We use a lot of == comparison in this class, because it's faster than .equals(). When coding here, we have to make sure to intern() the temporary strings so they compare properly.
 */

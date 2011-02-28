@@ -8,19 +8,39 @@
 //
 package net.sourceforge.btthud.ui.map;
 
-import net.sourceforge.btthud.data.*;
-import net.sourceforge.btthud.ui.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.*;
-import java.awt.font.*;
-import java.awt.image.*;
-
-import javax.swing.*;
-import java.util.*;
-
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.util.Iterator;
+
+import javax.swing.JComponent;
+
+import net.sourceforge.btthud.data.MUConstants;
+import net.sourceforge.btthud.data.MUData;
+import net.sourceforge.btthud.data.MUHex;
+import net.sourceforge.btthud.data.MUMapActions;
+import net.sourceforge.btthud.data.MUPoint;
+import net.sourceforge.btthud.data.MUPrefs;
+import net.sourceforge.btthud.data.MUUnitInfo;
+import net.sourceforge.btthud.data.MUWeather;
+import net.sourceforge.btthud.ui.Thud;
 
 /* Notes:
 
@@ -505,7 +525,7 @@ public class MUMapComponent extends JComponent implements ComponentListener
 
         MUUnitInfo				unit;
         Point2D					conPoint = new Point2D.Float();
-        Iterator				contacts = data.getContactsIterator(false);		// we don't care if it's sorted here
+        Iterator<MUUnitInfo>	contacts = data.getContactsIterator(false);		// we don't care if it's sorted here
         
         //System.out.println ("paintContacts: 001");
         

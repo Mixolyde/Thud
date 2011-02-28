@@ -8,9 +8,9 @@
 //
 package net.sourceforge.btthud.data;
 
-import java.awt.Point;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class MUPrefs implements Cloneable {

@@ -8,23 +8,20 @@
 //
 package net.sourceforge.btthud.engine;
 
-import net.sourceforge.btthud.engine.commands.Command;
-
-import net.sourceforge.btthud.ui.Thud;
-import net.sourceforge.btthud.data.MUHost;
-
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import net.sourceforge.btthud.data.MUHost;
+import net.sourceforge.btthud.engine.commands.Command;
+import net.sourceforge.btthud.ui.Thud;
 
 /**
  * This class is for handling the basic connection between the HUD and the MUX. 

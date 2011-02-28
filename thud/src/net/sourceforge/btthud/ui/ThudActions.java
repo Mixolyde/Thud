@@ -7,12 +7,19 @@
 //
 package net.sourceforge.btthud.ui;
 
+import java.awt.Event;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+
 import net.sourceforge.btthud.engine.commands.UserCommand;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
 
 // FIXME: All of this stuff probably shouldn't go into one class.
 public class ThudActions {

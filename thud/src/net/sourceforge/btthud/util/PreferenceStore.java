@@ -8,21 +8,20 @@
 //
 package net.sourceforge.btthud.util;
 
-import net.sourceforge.btthud.data.MUPrefs;
-import net.sourceforge.btthud.data.MUHost;
-import java.awt.Point;
 import java.awt.Color;
-import java.util.ArrayList;
-
+import java.awt.Point;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
-import java.util.prefs.Preferences;
-import java.util.prefs.BackingStoreException;
-
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
+
+import net.sourceforge.btthud.data.MUHost;
+import net.sourceforge.btthud.data.MUPrefs;
 
 public class PreferenceStore
 {

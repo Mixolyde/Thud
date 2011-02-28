@@ -8,7 +8,7 @@
 //
 package net.sourceforge.btthud.ui;
 
-import net.sourceforge.btthud.data.*;
+import net.sourceforge.btthud.data.MUHost;
 
 public class RemoveHostDialog extends javax.swing.JDialog {
 
