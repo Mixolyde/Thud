@@ -1,2 +1,6 @@
 #ignore the class files created by IDEs
 bin
+
+#ignore the files created by the build process
+dist
+lib/MySVNInfo.class

@@ -19,7 +19,7 @@
     <target name="bootstrap">
     	<!-- create the build time stamp -->
     	<tstamp/>
-        <javac srcdir="lib" destdir="lib" target="1.5" includeantruntime="no"
+        <javac srcdir="lib" destdir="lib" target="1.5" includeantruntime="yes"
                classpath="lib/svnkit.jar" />
         <taskdef name="my.svn.info" classname="MySVNInfo"
                  classpath="lib:lib/svnkit.jar" />
